@@ -11,6 +11,7 @@
       ], 
       "include_dirs": [ 
         "./node_modules/node-addon-api",
+        "./node_modules"
       ], 
       'define': [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ], 
     } 
