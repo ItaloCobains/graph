@@ -1,4 +1,5 @@
-const { Graph } = require('bindings')('graph.node');
+import { Graph } from './graph';
+;
 
 const graph = new Graph();
 graph.addNode(1);
