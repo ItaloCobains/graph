@@ -1,12 +1,15 @@
 {
   "name": "@italocobains/graph",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "This is a lib write by c++ and nodejs addon api for graph algorithm.",
   "main": "./dist/graph.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "testing:node": "npm run build && node ./dist/testing.js"
+    "testing:node": "npm run build && node ./dist/testing.js",
+    "preinstall": "npm i node-addon-api && npm install -g node-gyp && node-gyp rebuild",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run build"
   },
   "publishConfig": {
     "tag": "latest",
