@@ -1,15 +1,20 @@
 {
-  "name": "graph",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@italocobains/graph",
+  "version": "0.0.1",
+  "description": "This is a lib write by c++ and nodejs addon api for graph algorithm.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "testing:node": "npm run build && node ./dist/testing.js"
   },
+  "publishConfig": {
+    "tag": "latest",
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [],
-  "author": "",
+  "author": "ItaloCobains",
   "license": "ISC",
   "dependencies": {
     "bindings": "^1.5.0",
