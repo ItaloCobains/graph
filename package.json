@@ -9,7 +9,8 @@
     "testing:node": "npm run build && node ./dist/testing.js",
     "preinstall": "npm i node-addon-api && npm install -g node-gyp && node-gyp rebuild",
     "prepublishOnly": "npm run build",
-    "pretest": "npm run build"
+    "pretest": "npm run build",
+    "postinstall": "npm run build"
   },
   "publishConfig": {
     "tag": "latest",
