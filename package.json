@@ -1,6 +1,6 @@
 {
   "name": "@italocobains/graph",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a lib write by c++ and nodejs addon api for graph algorithm.",
   "main": "./dist/graph.js",
   "gypfile": true,

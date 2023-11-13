@@ -1,7 +1,7 @@
 #ifndef WRAPPER_HPP
 #define WRAPPER_HPP
 
-#include <napi.h>
+#include <node-addon-api/napi.h>
 #include "graph.hpp"
 
 class GraphWrapper : public Napi::ObjectWrap<GraphWrapper>
