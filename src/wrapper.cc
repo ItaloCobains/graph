@@ -61,3 +61,4 @@ Napi::Value GraphWrapper::HasEdge(const Napi::CallbackInfo &info)
   bool hasEdge = this->graph->hasEdge(from, to);
   return Napi::Boolean::New(env, hasEdge);
 }
+

@@ -31,6 +31,12 @@ public:
   void addEdge(int sourceId, int targetId);
   bool hasNode(int nodeId) const;
   bool hasEdge(int sourceId, int targetId) const;
+  void removeEdge(int sourceId, int targetId);
+  void removeNode(int nodeId);
+  std::vector<int> getNeighbors(int nodeId) const;
+  std::vector<int> getNodes() const;
+  std::string toString() const;
+  std::vector<int> getInNeighbors(int nodeId) const;
 };
 
 #endif
