@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/node"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}
