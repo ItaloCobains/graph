@@ -5,8 +5,9 @@
       "cflags!": [ "-fno-exceptions" ], 
       "cflags_cc!": [ "-fno-exceptions" ], 
       "sources": [ 
-        "./src/graph.cpp", 
-        "./src/index.cpp" 
+        "./src/graph.cc", 
+        "./src/index.cc",
+        "./src/wrapper.cc",
       ], 
       "include_dirs": [ 
         "./node_modules/node-addon-api",
