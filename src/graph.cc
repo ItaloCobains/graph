@@ -139,7 +139,8 @@ Edge *Graph::getEdge(int sourceId, int targetId) const
     {
         if (edge.sourceId == sourceId && edge.targetId == targetId)
         {
-            return &edge;
+            Edge *edgeCopy = new Edge(edge);
+            return edgeCopy;
         }
     }
     return nullptr;
