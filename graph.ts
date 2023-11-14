@@ -11,6 +11,15 @@ export interface IGraph {
   getInNeighbors(node: number): number[];
   removeNode(node: number): void;
   removeEdge(node1: number, node2: number): void;
+  getOutNeighbors(node: number): number[];
+  getEdge(node1: number, node2: number): number;
+  getDegree(node: number): number;
+  getInDegree(node: number): number;
+  getOutDegree(node: number): number;
+  isEmpty(): boolean;
+  clear(): void;
+  getNumNodes(): number;
+  getNumEdges(): number;
 }
 
 export var Graph: {

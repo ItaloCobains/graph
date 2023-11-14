@@ -22,6 +22,15 @@ private:
   Napi::Value getInNeighbors(const Napi::CallbackInfo &info);
   Napi::Value removeNode(const Napi::CallbackInfo &info);
   Napi::Value removeEdge(const Napi::CallbackInfo &info);
+  Napi::Value getOutNeighbors(const Napi::CallbackInfo &info);
+  Napi::Value getEdge(const Napi::CallbackInfo &info);
+  Napi::Value getDegree(const Napi::CallbackInfo &info);
+  Napi::Value getInDegree(const Napi::CallbackInfo &info);
+  Napi::Value getOutDegree(const Napi::CallbackInfo &info);
+  Napi::Value isEmpty(const Napi::CallbackInfo &info);
+  Napi::Value clear(const Napi::CallbackInfo &info);
+  Napi::Value getNumNodes(const Napi::CallbackInfo &info);
+  Napi::Value getNumEdges(const Napi::CallbackInfo &info);
   Graph *graph;
 };
 

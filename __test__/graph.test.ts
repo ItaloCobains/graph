@@ -126,4 +126,142 @@ describe('Graph Library', () => {
   test('should return empty array for nodes of empty graph', () => {
     expect(graph.getNodes()).toEqual([]);
   });
+
+  test('should return empty array for neighbors of non-existent nodes', () => {
+    expect(graph.getNeighbors(1)).toEqual([]);
+  });
+
+  test('should return empty array for in neighbors of non-existent nodes', () => {
+    expect(graph.getInNeighbors(1)).toEqual([]);
+  });
+
+  test('should return empty array for out neighbors of non-existent nodes', () => {
+    expect(graph.getOutNeighbors(1)).toEqual([]);
+  });
+
+  test('should return 0 for degree of non-existent nodes', () => {
+    expect(graph.getDegree(1)).toEqual(0);
+  });
+
+  test('should return 0 for in degree of non-existent nodes', () => {
+    expect(graph.getInDegree(1)).toEqual(0);
+  });
+
+  test('should return 0 for out degree of non-existent nodes', () => {
+    expect(graph.getOutDegree(1)).toEqual(0);
+  });
+
+  test('should return true for empty graph', () => {
+    expect(graph.isEmpty()).toBe(true);
+  });
+
+  test('should return false for non-empty graph', () => {
+    graph.addNode(1);
+
+    expect(graph.isEmpty()).toBe(false);
+  });
+
+  test('should return 0 for empty graph', () => {
+    expect(graph.getNumNodes()).toEqual(0);
+    expect(graph.getNumEdges()).toEqual(0);
+  });
+
+  test('should return correct number of nodes and edges', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getNumNodes()).toEqual(3);
+    expect(graph.getNumEdges()).toEqual(2);
+  });
+
+  test('should clear graph', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addEdge(1, 2);
+
+    graph.clear();
+
+    expect(graph.hasNode(1)).toBe(false);
+    expect(graph.hasNode(2)).toBe(false);
+    expect(graph.hasEdge(1, 2)).toBe(false);
+  });
+
+  test('should return correct degree', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getDegree(1)).toEqual(1);
+    expect(graph.getDegree(2)).toEqual(2);
+    expect(graph.getDegree(3)).toEqual(1);
+  });
+
+  test('should return correct in degree', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getInDegree(1)).toEqual(0);
+    expect(graph.getInDegree(2)).toEqual(1);
+    expect(graph.getInDegree(3)).toEqual(1);
+  });
+
+  test('should return correct out degree', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getOutDegree(1)).toEqual(1);
+    expect(graph.getOutDegree(2)).toEqual(1);
+    expect(graph.getOutDegree(3)).toEqual(0);
+  });
+
+  test('should return 0 for non-existent edge', () => {
+    expect(graph.getEdge(1, 2)).toEqual(null);
+  });
+
+  test('should return correct degree', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getDegree(1)).toEqual(1);
+    expect(graph.getDegree(2)).toEqual(2);
+    expect(graph.getDegree(3)).toEqual(1);
+  });
+
+  test('should return correct in degree', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getInDegree(1)).toEqual(0);
+    expect(graph.getInDegree(2)).toEqual(1);
+    expect(graph.getInDegree(3)).toEqual(1);
+  });
+
+  test('should return correct out degree', () => {
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+
+    expect(graph.getOutDegree(1)).toEqual(1);
+    expect(graph.getOutDegree(2)).toEqual(1);
+    expect(graph.getOutDegree(3)).toEqual(0);
+  });
 });

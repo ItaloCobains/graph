@@ -119,3 +119,88 @@ void Graph::removeNode(int nodeId)
         }
     }
 }
+
+std::vector<int> Graph::getOutNeighbors(int nodeId) const
+{
+    std::vector<int> neighbors;
+    for (auto edge : edges)
+    {
+        if (edge.sourceId == nodeId)
+        {
+            neighbors.push_back(edge.targetId);
+        }
+    }
+    return neighbors;
+}
+
+Edge *Graph::getEdge(int sourceId, int targetId) const
+{
+    for (auto edge : edges)
+    {
+        if (edge.sourceId == sourceId && edge.targetId == targetId)
+        {
+            return &edge;
+        }
+    }
+    return nullptr;
+}
+
+int Graph::getDegree(int nodeId) const
+{
+    int degree = 0;
+    for (auto edge : edges)
+    {
+        if (edge.sourceId == nodeId || edge.targetId == nodeId)
+        {
+            ++degree;
+        }
+    }
+    return degree;
+}
+
+int Graph::getInDegree(int nodeId) const
+{
+    int degree = 0;
+    for (auto edge : edges)
+    {
+        if (edge.targetId == nodeId)
+        {
+            ++degree;
+        }
+    }
+    return degree;
+}
+
+int Graph::getOutDegree(int nodeId) const
+{
+    int degree = 0;
+    for (auto edge : edges)
+    {
+        if (edge.sourceId == nodeId)
+        {
+            ++degree;
+        }
+    }
+    return degree;
+}
+
+bool Graph::isEmpty() const
+{
+    return nodes.empty();
+}
+
+void Graph::clear()
+{
+    nodes.clear();
+    edges.clear();
+}
+
+int Graph::getNumNodes() const
+{
+    return nodes.size();
+}
+
+int Graph::getNumEdges() const
+{
+    return edges.size();
+}

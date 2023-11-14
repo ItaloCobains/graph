@@ -37,6 +37,15 @@ public:
   std::vector<int> getNodes() const;
   std::string toString() const;
   std::vector<int> getInNeighbors(int nodeId) const;
+  std::vector<int> getOutNeighbors(int nodeId) const;
+  Edge *getEdge(int sourceId, int targetId) const;
+  int getDegree(int nodeId) const;
+  int getInDegree(int nodeId) const;
+  int getOutDegree(int nodeId) const;
+  bool isEmpty() const;
+  void clear();
+  int getNumNodes() const;
+  int getNumEdges() const;
 };
 
 #endif

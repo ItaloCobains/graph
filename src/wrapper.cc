@@ -17,6 +17,15 @@ Napi::Object GraphWrapper::Init(Napi::Env env, Napi::Object exports)
                                                       InstanceMethod("getInNeighbors", &GraphWrapper::getInNeighbors),
                                                       InstanceMethod("removeNode", &GraphWrapper::removeNode),
                                                       InstanceMethod("removeEdge", &GraphWrapper::removeEdge),
+                                                      InstanceMethod("getOutNeighbors", &GraphWrapper::getOutNeighbors),
+                                                      InstanceMethod("getEdge", &GraphWrapper::getEdge),
+                                                      InstanceMethod("getDegree", &GraphWrapper::getDegree),
+                                                      InstanceMethod("getInDegree", &GraphWrapper::getInDegree),
+                                                      InstanceMethod("getOutDegree", &GraphWrapper::getOutDegree),
+                                                      InstanceMethod("isEmpty", &GraphWrapper::isEmpty),
+                                                      InstanceMethod("clear", &GraphWrapper::clear),
+                                                      InstanceMethod("getNumNodes", &GraphWrapper::getNumNodes),
+                                                      InstanceMethod("getNumEdges", &GraphWrapper::getNumEdges),
                                                   });
 
   constructor = Napi::Persistent(func);
@@ -128,4 +137,85 @@ Napi::Value GraphWrapper::removeEdge(const Napi::CallbackInfo &info)
   int to = info[1].ToNumber().Int32Value();
   this->graph->removeEdge(from, to);
   return env.Null();
+}
+
+Napi::Value GraphWrapper::getOutNeighbors(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int nodeId = info[0].ToNumber().Int32Value();
+  std::vector<int> neighboard = this->graph->getOutNeighbors(nodeId);
+  Napi::Array result = Napi::Array::New(env, neighboard.size());
+  for (int i = 0; i < neighboard.size(); i++)
+  {
+    result[i] = neighboard[i];
+  }
+  return result;
+}
+
+Napi::Value GraphWrapper::getEdge(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int from = info[0].ToNumber().Int32Value();
+  int to = info[1].ToNumber().Int32Value();
+  Edge *edge = this->graph->getEdge(from, to);
+  if (edge == nullptr)
+  {
+    return env.Null();
+  }
+  Napi::Object result = Napi::Object::New(env);
+  result.Set("sourceId", edge->sourceId);
+  result.Set("targetId", edge->targetId);
+  return result;
+}
+
+Napi::Value GraphWrapper::getDegree(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int nodeId = info[0].ToNumber().Int32Value();
+  int degree = this->graph->getDegree(nodeId);
+  return Napi::Number::New(env, degree);
+}
+
+Napi::Value GraphWrapper::getInDegree(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int nodeId = info[0].ToNumber().Int32Value();
+  int degree = this->graph->getInDegree(nodeId);
+  return Napi::Number::New(env, degree);
+}
+
+Napi::Value GraphWrapper::getOutDegree(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int nodeId = info[0].ToNumber().Int32Value();
+  int degree = this->graph->getOutDegree(nodeId);
+  return Napi::Number::New(env, degree);
+}
+
+Napi::Value GraphWrapper::isEmpty(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  bool isEmpty = this->graph->isEmpty();
+  return Napi::Boolean::New(env, isEmpty);
+}
+
+Napi::Value GraphWrapper::clear(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  this->graph->clear();
+  return env.Null();
+}
+
+Napi::Value GraphWrapper::getNumNodes(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int numNodes = this->graph->getNumNodes();
+  return Napi::Number::New(env, numNodes);
+}
+
+Napi::Value GraphWrapper::getNumEdges(const Napi::CallbackInfo &info)
+{
+  Napi::Env env = info.Env();
+  int numEdges = this->graph->getNumEdges();
+  return Napi::Number::New(env, numEdges);
 }
