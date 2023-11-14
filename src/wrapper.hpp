@@ -16,6 +16,12 @@ private:
   Napi::Value AddEdge(const Napi::CallbackInfo &info);
   Napi::Value HasNode(const Napi::CallbackInfo &info);
   Napi::Value HasEdge(const Napi::CallbackInfo &info);
+  Napi::Value getNeighbors(const Napi::CallbackInfo &info);
+  Napi::Value getNodes(const Napi::CallbackInfo &info);
+  Napi::Value toString(const Napi::CallbackInfo &info);
+  Napi::Value getInNeighbors(const Napi::CallbackInfo &info);
+  Napi::Value removeNode(const Napi::CallbackInfo &info);
+  Napi::Value removeEdge(const Napi::CallbackInfo &info);
   Graph *graph;
 };
 
